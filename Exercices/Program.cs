@@ -45,8 +45,12 @@ namespace Exercices
             GuestHouse gh1 = new GuestHouse("Guest House 1", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 3);
             GuestHouse gh2 = new GuestHouse("GuestHouse 2", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 3);
 
-            gh1.DisplayInfo();
-            gh2.DisplayInfo();
+            Hotel hotelClass = new Hotel("Hoooteeel", "desc hotel", "My address", 3, 30, DateTime.Now, rooms,5);
+            hotelClass.ChangeHotelAddress("This is the new Address");
+            hotelClass.DisplayInfo();
+
+            //gh1.DisplayInfo();
+            //gh2.DisplayInfo();
 
           //  Console.ReadLine();
 
