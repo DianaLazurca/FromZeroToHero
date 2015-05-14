@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exercices.day_7;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,8 @@ namespace Exercices
         {
             Room room1 = new Room("room1", 1, 12, 2, RoomTypes.Single);
             Room room2 = new Room("room2", 2, 14, 4, RoomTypes.Double);
-            Room room3 = new Room("room3", 4, 3, 3, RoomTypes.Single);
 
-            Room[] rooms = new Room[3] {room1, room2, room3};
+            Room[] rooms = new Room[2] {room1, room2};
 
             Property hotel = new Property("My Property", "desc hotel", "My address", 3, 30, DateTime.Now, rooms);
           
@@ -39,8 +39,16 @@ namespace Exercices
             Console.WriteLine(" ------ From km to miles {0} ------ \n ", newHotel.GetDistance("KM"));
            // hotel.DisplayInfo();
             Console.WriteLine(" -    - - - - - - - - - - - - - - - - - \n");
-           newHotel.DisplayInfo();
-            Console.ReadLine();
+          // newHotel.DisplayInfo();
+           
+
+            GuestHouse gh1 = new GuestHouse("Guest House 1", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 3);
+            GuestHouse gh2 = new GuestHouse("GuestHouse 2", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 3);
+
+            gh1.DisplayInfo();
+            gh2.DisplayInfo();
+
+          //  Console.ReadLine();
 
           /*  Hotel hotel = new Hotel();
             hotel.description = "desc";
