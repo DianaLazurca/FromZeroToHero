@@ -148,6 +148,11 @@ namespace Exercices
        }
        #endregion
 
+       public virtual  double CalculateRating()
+       {
+           return 2 * Stars;
+       }
+
        public double GetDistance(string unit)
        {
            if (distanceMesurementUnit.Equals(unit))

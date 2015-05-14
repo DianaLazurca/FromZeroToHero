@@ -42,12 +42,15 @@ namespace Exercices
           // newHotel.DisplayInfo();
            
 
-            GuestHouse gh1 = new GuestHouse("Guest House 1", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 3);
-            GuestHouse gh2 = new GuestHouse("GuestHouse 2", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 3);
+            Property gh1 = new GuestHouse("Guest House 1", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 34);
+           // GuestHouse gh2 = new GuestHouse("GuestHouse 2", "desc hotel", "My address", 3, 30, DateTime.Now, rooms, 3);
+            Console.WriteLine("Rating for guest house {0}", gh1.CalculateRating()); 
+            Property hotelClass = new Hotel("Hoooteeel", "desc hotel", "My address", 3, 30, DateTime.Now, rooms,5);
+            Console.WriteLine("Rating for hotel {0}", hotelClass.CalculateRating()); 
+            //hotelClass.ChangeHotelAddress("This is the new Address");
+            //hotelClass.DisplayInfo();
 
-            Hotel hotelClass = new Hotel("Hoooteeel", "desc hotel", "My address", 3, 30, DateTime.Now, rooms,5);
-            hotelClass.ChangeHotelAddress("This is the new Address");
-            hotelClass.DisplayInfo();
+            
 
             //gh1.DisplayInfo();
             //gh2.DisplayInfo();

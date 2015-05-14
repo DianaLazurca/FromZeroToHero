@@ -14,5 +14,12 @@ namespace Exercices.day_7
             :base(name,description,address, stars,distanceToCenter,openingDate,rooms) {
                 ComfortIndex = comfortIndex;
         }
+
+        public override double CalculateRating()
+        {
+            double stars2 = base.CalculateRating() * 0.4d;
+
+            return (Convert.ToDouble(ComfortIndex) * 0.6d)+ stars2;
+        }
     }
 }

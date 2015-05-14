@@ -16,7 +16,17 @@ namespace Exercices.day_7
 
         public void ChangeHotelAddress(string newAddress)
         {
-            this.address = newAddress;
+            address = newAddress;
+        }
+
+        public override double CalculateRating()
+        {
+            double stars2 = base.CalculateRating() * 0.7d;
+            if (Likes > 10000)
+            {
+                Likes = 10;
+            }
+            return (Convert.ToDouble(Likes) / 1000d) * 0.3d + stars2;
         }
     }
 }
