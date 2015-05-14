@@ -16,10 +16,10 @@ namespace Exercices
 
             Room[] rooms = new Room[3] {room1, room2, room3};
 
-            Hotel hotel = new Hotel("My Hotel", "desc hotel", "My address", 3, 30, DateTime.Now, rooms);
+            Property hotel = new Property("My Property", "desc hotel", "My address", 3, 30, DateTime.Now, rooms);
           
 
-            Hotel newHotel = new Hotel() 
+            Property newHotel = new Property() 
             {
             
               Name = "Hotel2",

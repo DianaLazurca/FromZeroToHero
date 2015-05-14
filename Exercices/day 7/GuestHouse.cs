@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercices.day_7
 {
-    class Hotel : Property
+    class GuestHouse : Property
     {
     }
 }

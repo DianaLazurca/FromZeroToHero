@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="day 7\GuestHouse.cs" />
     <Compile Include="day 7\Hotel.cs" />
+    <Compile Include="day 7\Property.cs" />
     <Compile Include="day 7\DistanceMeasurementConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
