@@ -32,6 +32,11 @@ namespace Exercices
            
         }
 
+       public Hotel()
+       {
+
+       }
+
        static Hotel()
        {
            distanceMesurementUnit = "Miles";

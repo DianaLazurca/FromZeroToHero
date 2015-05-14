@@ -19,15 +19,27 @@ namespace Exercices
             Hotel hotel = new Hotel("My Hotel", "desc hotel", "My address", 3, 30, DateTime.Now, rooms);
           
 
-            Hotel newHotel = new Hotel("Hotel2", "description", "some address", 5, 70, DateTime.Now, rooms);
+            Hotel newHotel = new Hotel() 
+            {
+            
+              Name = "Hotel2",
+              Description = "description",
+              Address = "some address",
+              Stars = 2,
+              DistanceToCenter = 30,
+              OpeningDate = DateTime.Now,
+              Rooms = rooms
+            };
+            
+            
             Console.WriteLine(" ------ From miles to km {0} ------ \n ", newHotel.GetDistance("KM"));
             newHotel.SetDistanceMeasurementUnit("KM");
             
             Console.WriteLine(" ------ New measurement unit {0} ------ \n ", newHotel.GetDistanceMeasurementUnit());
             Console.WriteLine(" ------ From km to miles {0} ------ \n ", newHotel.GetDistance("KM"));
-            hotel.DisplayInfo();
+           // hotel.DisplayInfo();
             Console.WriteLine(" -    - - - - - - - - - - - - - - - - - \n");
-            //newHotel.DisplayInfo();
+           newHotel.DisplayInfo();
             Console.ReadLine();
 
           /*  Hotel hotel = new Hotel();
