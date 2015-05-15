@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    sealed class Hotel : Property
+    sealed public class Hotel : Property
     {
         public int Likes { get; set; }
         public Hotel(string name, string description, string address, int stars, double distanceToCenter, DateTime openingDate, Room[] rooms, int likes) 

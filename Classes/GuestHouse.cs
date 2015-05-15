@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    class GuestHouse : Property
+    public class GuestHouse : Property
     {
         public int ComfortIndex { get; set; }
 

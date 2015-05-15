@@ -14,7 +14,7 @@ namespace Classes
         KingBedroom
     };
 
-    class Room
+   public  class Room
     {
         private string description;
         private int places;
