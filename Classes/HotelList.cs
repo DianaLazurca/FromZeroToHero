@@ -12,7 +12,7 @@ namespace Classes
 
         public HotelList()
         {
-            hotels = new List<Hotel>();
+            Hotels = new List<Hotel>();
         }
 
         public List<Hotel> Hotels { get; set; }

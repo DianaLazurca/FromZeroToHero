@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    enum RoomTypes { 
+    public  enum RoomTypes { 
         Single, 
         Double, 
         Twin, 

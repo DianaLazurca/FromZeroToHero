@@ -19,9 +19,11 @@ namespace Classes
         private Room[] rooms;
         public bool hasIndoorPool;
         public bool hasFreeWiFi;
+        protected int id;
 
-       public Property(string name, string description, string address, int stars, double distanceToCenter, DateTime openingDate, Room[] rooms)
+       public Property(int id, string name, string description, string address, int stars, double distanceToCenter, DateTime openingDate, Room[] rooms)
         {
+            Id = id;
             Name = name;
             Description = description;
             Address = address;
@@ -42,6 +44,7 @@ namespace Classes
            distanceMesurementUnit = "Miles";
        }
        #region props
+       public int Id { get; set; }
        public bool HasIndoorPool { get; set; }
        public bool HasFreeWiFi { get; set; }
        public Room[] Rooms { get; set; }

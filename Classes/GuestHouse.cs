@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class GuestHouse : Property
+     class GuestHouse : Property
     {
         public int ComfortIndex { get; set; }
 
-        public GuestHouse(string name, string description, string address, int stars, double distanceToCenter, DateTime openingDate, Room[] rooms,int comfortIndex) 
-            :base(name,description,address, stars,distanceToCenter,openingDate,rooms) {
+        public GuestHouse(int id, string name, string description, string address, int stars, double distanceToCenter, DateTime openingDate, Room[] rooms,int comfortIndex) 
+            :base(id, name,description,address, stars,distanceToCenter,openingDate,rooms) {
                 ComfortIndex = comfortIndex;
         }
 

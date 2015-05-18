@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
 }
 
 <article class="col-md-8">
@@ -81,14 +82,32 @@
         <table class="table table-striped">
             <tr>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Address</th>
-                <th>City</th>
-                <th>Site</th>
+                <th>Km to Center</th>
+                <th>Opening Date</th>
                 <th>Rooms</th>
                 <th>Stars</th>
             </tr>
 
-            <tr>
+            @foreach (var hotel in @ViewBag.MyList)
+            {
+                <tr>
+                    <td> @hotel.Name</td>
+                    <td> @hotel.Description</td>
+                    <td> @hotel.Address</td>                    
+                    <td> @hotel.DistanceToCenter</td>
+                    <td> @hotel.OpeningDate</td>
+                    <td> @hotel.Rooms.Length</td>
+                    <td>
+                    @for (int i = 0; i < @hotel.Stars; i++)
+                    {
+                        <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
+                    }
+                     </td>
+                </tr>
+            }
+          <!--  <tr>
                 <td> Hotel1</td>
                 <td>Address1</td>
                 <td>City1</td>
@@ -122,7 +141,7 @@
                 <td>
                     <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
                 </td>
-            </tr>
+            </tr>-->
         </table>
         <a target="_top" href="#header"> Go to top</a>
     </section>
@@ -147,3 +166,4 @@
         <a target="_self" href="#header"> Go to top</a>
     </section>
 </article>
+
