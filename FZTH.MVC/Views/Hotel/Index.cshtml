@@ -1,41 +1,66 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
-<article class="col-md-8">
+    <article class="col-md-8">
 
-    <section title="Search" id="searchSection">
+        <section title="Search" id="searchSection">
 
 
-        <form method="post" action="#" class="form-horizontal">
-            <fieldset>
-                <legend>Reservation Form</legend>
-                <div class="form-group">
-                    <label for="cityName" class="control-label col-md-2"> City</label>
-                    <div class="col-md-4">
-                        <select id="cityName" class="form-control col-md-4">
-                            <option value="Iasi">Iasi</option>
-                            <option value="Bucharest">Bucharest</option>
-                            <option value="London">London</option>
-                            <option value="New York">New York</option>
-                        </select>
+            <form method="post" action="#" class="form-horizontal">
+                <fieldset>
+                    <legend>Reservation Form</legend>
+                    <div class="form-group">
+                        <label for="cityName" class="control-label col-md-2"> City</label>
+                        <div class="col-md-4">
+                            <select id="cityName" class="form-control col-md-4">
+                                <option value="Iasi">Iasi</option>
+                                <option value="Bucharest">Bucharest</option>
+                                <option value="London">London</option>
+                                <option value="New York">New York</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label for="check-inDate" class="control-label col-md-2"> Check-in Date</label>
-                    <div class="col-md-4">
-                        <div class="container">
-                            <div class="row">
-                                <div class='col-md-4'>
-                                    <div class="form-group">
-                                        <div class='input-group date' id='datetimepickerIn'>
-                                            <input type='text' class="form-control" />
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
+                        <label for="check-inDate" class="control-label col-md-2"> Check-in Date</label>
+                        <div class="col-md-4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class='col-md-4'>
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepickerIn'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <input type="submit" value="Reserve" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="check-outDate" class="control-label col-md-2"> Check-out Date</label>
+
+                        <div class="col-md-4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class='col-md-4'>
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepickerOut'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -43,127 +68,81 @@
                         </div>
                     </div>
 
-                    <div class="col-md-2">
-                        <input type="submit" value="Reserve" class="btn btn-default" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="check-outDate" class="control-label col-md-2"> Check-out Date</label>
-
-                    <div class="col-md-4">
-                        <div class="container">
-                            <div class="row">
-                                <div class='col-md-4'>
-                                    <div class="form-group">
-                                        <div class='input-group date' id='datetimepickerOut'>
-                                            <input type='text' class="form-control" />
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
+                </fieldset>
+            </form>
 
-            </fieldset>
-        </form>
-
-        <a target="_top" href="#header"> Go to top</a>
-    </section>
-    <br />
-    <section id="tableSection">
-        <h3>Hotel List</h3>
-        <table class="table table-striped">
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Address</th>
-                <th>Km to Center</th>
-                <th>Opening Date</th>
-                <th>Rooms</th>
-                <th>Stars</th>
-            </tr>
-
-            @foreach (var hotel in @ViewBag.MyList)
-            {
+            <a target="_top" href="#header"> Go to top</a>
+        </section>
+        <br />
+        <section id="tableSection">
+            <h3>Hotel List</h3>
+            <table class="table">
                 <tr>
-                    <td> @hotel.Name</td>
-                    <td> @hotel.Description</td>
-                    <td> @hotel.Address</td>                    
-                    <td> @hotel.DistanceToCenter</td>
-                    <td> @hotel.OpeningDate</td>
-                    <td> @hotel.Rooms.Length</td>
-                    <td>
-                    @for (int i = 0; i < @hotel.Stars; i++)
-                    {
-                        <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
-                    }
-                     </td>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Address</th>
+                    <th>Km to Center</th>
+                    <th>Opening Date</th>
+                    <th>Rooms</th>
+                    <th>Stars</th>
                 </tr>
-            }
-          <!--  <tr>
-                <td> Hotel1</td>
-                <td>Address1</td>
-                <td>City1</td>
-                <td><a href="https://www.google.ro" target="_blank"> Site1</a></td>
-                <td>Rooms1</td>
-                <td>
-                    <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
-                    <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
-                    <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
-                </td>
-            </tr>
 
-            <tr>
-                <td>Hotel2</td>
-                <td>Address2</td>
-                <td>City2</td>
-                <td><a href="https://www.google.ro" target="_blank"> Site2</a></td>
-                <td>Rooms2</td>
-                <td>
-                    <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
-                    <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
-                </td>
-            </tr>
+                @{
+                    int colorI = 1;
+                    
+                    foreach (var hotel in Classes.HotelList.Hotels)
+                    {
+                        var color = "pink";
+                        var newClass = "table-odd-row";
+                        if (colorI % 2 == 0)
+                        {
+                            color = "green";
+                            newClass = "table-even-row";
+                        }
+                        colorI++;
+                        <tr class="@newClass">
+                            <td> @hotel.Name</td>
+                            <td> @hotel.Description</td>
+                            <td> @hotel.Address</td>
+                            <td> @hotel.DistanceToCenter</td>
+                            <td> @hotel.OpeningDate</td>
+                            <td> @hotel.Rooms.Length</td>
+                            <td>
+                                @for (int i = 0; i < @hotel.Stars; i++)
+                                {
+                                    <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
+                                }
+                            </td>
+                        </tr>
 
-            <tr>
-                <td>Hotel3</td>
-                <td>Address3</td>
-                <td>City3</td>
-                <td> <a href="https://www.google.ro" target="_blank"> Site3</a></td>
-                <td>Rooms3</td>
-                <td>
-                    <img src="images/star.gif" alt="Noo star for you" height="20" width="20" />
-                </td>
-            </tr>-->
-        </table>
-        <a target="_top" href="#header"> Go to top</a>
-    </section>
+                    }
+                }
 
 
-    <br />
-    <section id="lastMinuteDealsSection">
 
-        <h3>Last minute deals</h3>
-        <dl>
-            <dt>Hotel 1</dt>
-            <dd><img src="images/hotel1.gif" class="img-responsive img-circle" /></dd>
-            <dd>Discount 10%</dd>
-        </dl>
+            </table>
+            <a target="_top" href="#header"> Go to top</a>
+        </section>
 
-        <dl>
-            <dt>Hotel 2</dt>
-            <dd><img src="images/hotel2.gif" class="img-responsive img-circle" /></dd>
-            <dd><p>Discount 40%</p></dd>
-        </dl>
 
-        <a target="_self" href="#header"> Go to top</a>
-    </section>
-</article>
+        <br />
+        <section id="lastMinuteDealsSection">
 
+            <h3>Last minute deals</h3>
+            <dl>
+                <dt>Hotel 1</dt>
+                <dd><img src="images/hotel1.gif" class="img-responsive img-circle" /></dd>
+                <dd>Discount 10%</dd>
+            </dl>
+
+            <dl>
+                <dt>Hotel 2</dt>
+                <dd><img src="images/hotel2.gif" class="img-responsive img-circle" /></dd>
+                <dd><p>Discount 40%</p></dd>
+            </dl>
+
+            <a target="_self" href="#header"> Go to top</a>
+        </section>
+    </article>
