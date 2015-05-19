@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Classes;
+using FZTH.MVC.Models;
 
 namespace FZTH.MVC.Controllers
 {
@@ -56,6 +56,10 @@ namespace FZTH.MVC.Controllers
         {
            
             var hotel = HotelList.Hotels.FirstOrDefault(x => x.Id == id);
+            if (hotel == null)
+            {
+                return HttpNotFound();
+            }
             return View(hotel);
         }
 
@@ -65,6 +69,10 @@ namespace FZTH.MVC.Controllers
             try
             {
                 var hotel = HotelList.Hotels.FirstOrDefault(x => x.Id == id);
+                if (hotel == null)
+                {
+                    return HttpNotFound();
+                }
                 HotelList.Hotels.Remove(hotel);
                 return RedirectToAction("Index");
             }
@@ -77,10 +85,35 @@ namespace FZTH.MVC.Controllers
         public ActionResult Edit(int id)
         {
             var hotel = HotelList.Hotels.FirstOrDefault(x => x.Id == id);
-           
+            if (hotel == null)
+            {
+                return HttpNotFound();
+            }
             return View(hotel);
         }
-        
+        [HttpPost]
+        public ActionResult Edit(Hotel hotel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                foreach (Hotel h in HotelList.Hotels)
+                {
+                    if (h.Id == hotel.Id)
+                    {
+                        h.Name = hotel.Name;
+                        h.Description = hotel.Description;
+                        h.Stars = hotel.Stars;
+                        h.OpeningDate = hotel.OpeningDate;
+                        h.Rooms = new Room[2];
+                        h.DistanceToCenter = hotel.DistanceToCenter;
+                        return RedirectToAction("Index");
+                    }
+                }
+              
+            }
+            return HttpNotFound();
+        }
         public ActionResult Detail(int id)
         {
             /*var hotel = hotels.Hotels.FirstOrDefault(x => x.Id == id);
