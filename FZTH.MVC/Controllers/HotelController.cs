@@ -107,12 +107,17 @@ namespace FZTH.MVC.Controllers
                         h.OpeningDate = hotel.OpeningDate;
                         h.Rooms = new Room[2];
                         h.DistanceToCenter = hotel.DistanceToCenter;
-                        return RedirectToAction("Index");
+                      
                     }
                 }
-              
+                return RedirectToAction("Index");
+
             }
-            return HttpNotFound();
+            else
+            {
+                return View();
+            }
+            
         }
         public ActionResult Detail(int id)
         {
