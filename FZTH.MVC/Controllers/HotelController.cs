@@ -13,11 +13,11 @@ namespace FZTH.MVC.Controllers
         //
         // GET: /Hotel/
         [HttpGet]
-        public ActionResult Index()
+        public ViewResult Index()
         {
         
 
-            return View("Index");
+            return View(HotelList.Hotels);
         }
         
         public ActionResult Detail(int id)
