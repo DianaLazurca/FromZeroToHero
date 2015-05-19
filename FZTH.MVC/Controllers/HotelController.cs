@@ -19,12 +19,38 @@ namespace FZTH.MVC.Controllers
 
             return View(HotelList.Hotels);
         }
-
+        
         public ActionResult Create()
         {
             
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create(Hotel hotel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                int newID = 0;
+                foreach(Hotel h in HotelList.Hotels) {
+                    if (h.Id > newID)
+                    {
+                        newID = h.Id;
+                    }
+                }
+
+                hotel.Id = newID + 1;
+                hotel.Rooms = new Room[2];
+                HotelList.Hotels.Add(hotel);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        
         
         public ActionResult Delete(int id)
         {

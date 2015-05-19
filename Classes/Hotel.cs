@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.ComponentModel;
 
 namespace Classes
 {
      public class Hotel
     {
         public int Likes { get; set; }
+      
         private string name;
         private string description;
         protected string address;
@@ -60,7 +63,6 @@ namespace Classes
                 }
             }
         }
-
 
         public string Name
         {
