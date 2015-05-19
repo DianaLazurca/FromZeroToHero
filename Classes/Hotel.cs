@@ -21,6 +21,11 @@ namespace Classes
         public bool hasFreeWiFi;
         protected int id;
 
+        public Hotel()
+        {
+
+        }
+
         public Hotel(int id, string name, string description, string address, int stars, double distanceToCenter, DateTime openingDate, Room[] rooms, int likes) 
         {
                 Likes = likes;

@@ -2,14 +2,14 @@
     ViewBag.Title = "Index";
 }
 @model IEnumerable<Classes.Hotel>
-    <article class="col-md-8">
 
         <section title="Search" id="searchSection">
 
-
+            
             <form method="post" action="#" class="form-horizontal">
                 <fieldset>
                     <legend>Reservation Form</legend>
+                    
                     <div class="form-group">
                         <label for="cityName" class="control-label col-md-2"> City</label>
                         <div class="col-md-4">
@@ -78,6 +78,7 @@
         <br />
         <section id="tableSection">
             <h3>Hotel List</h3>
+            @Html.ActionLink("Create New", "Create", "Hotel")
             <table class="table">
                 <tr>
                     <th>Name</th>
@@ -87,6 +88,7 @@
                     <th>Opening Date</th>
                     <th>Rooms</th>
                     <th>Stars</th>
+                    <th>Operations</th>
                 </tr>
 
                 @{
@@ -115,6 +117,7 @@
                                     <img src="~/images/star.gif" alt="Noo star for you" height="20" width="20" />
                                 }
                             </td>
+                            <td>@Html.ActionLink("Edit", "Edit", new { id = hotel.Id})|@Html.ActionLink("Delete", "Delete", new { id = hotel.Id }) </td>
                         </tr>
 
                     }
@@ -145,4 +148,3 @@
 
             <a target="_self" href="#header"> Go to top</a>
         </section>
-    </article>
