@@ -105,9 +105,11 @@ namespace FZTH.MVC.Controllers
                         h.Description = hotel.Description;
                         h.Stars = hotel.Stars;
                         h.OpeningDate = hotel.OpeningDate;
-                        h.Rooms = new Room[2];
                         h.DistanceToCenter = hotel.DistanceToCenter;
-                      
+                        h.City.Name = hotel.City.Name;
+                        h.City.County.Name = hotel.City.County.Name;
+                        h.RoomNr = hotel.RoomNr;
+                        h.Rooms = new Room[hotel.RoomNr];
                     }
                 }
                 return RedirectToAction("Index");

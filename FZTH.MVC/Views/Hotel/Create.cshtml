@@ -25,18 +25,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HasIndoorPool, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HasIndoorPool)
-                @Html.ValidationMessageFor(model => model.HasIndoorPool)
+                @Html.EditorFor(model => model.City.Name)
+                @Html.ValidationMessageFor(model => model.City.Name)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HasFreeWiFi, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.City.County, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HasFreeWiFi)
-                @Html.ValidationMessageFor(model => model.HasFreeWiFi)
+                @Html.EditorFor(model => model.City.County.Name)
+                @Html.ValidationMessageFor(model => model.City.County.Name)
             </div>
         </div>
 
@@ -69,6 +69,13 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Stars)
                 @Html.ValidationMessageFor(model => model.Stars)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomNr, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoomNr)
+                @Html.ValidationMessageFor(model => model.RoomNr)
             </div>
         </div>
 

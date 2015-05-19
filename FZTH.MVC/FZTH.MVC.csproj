@@ -120,6 +120,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\County.cs" />
     <Compile Include="Models\Hotel.cs">
       <SubType>
       </SubType>

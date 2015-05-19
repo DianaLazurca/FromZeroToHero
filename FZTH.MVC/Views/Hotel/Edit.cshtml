@@ -25,7 +25,7 @@
 
         @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
+     <!-- <div class="form-group">
             @Html.LabelFor(model => model.HasIndoorPool, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.HasIndoorPool)
@@ -40,7 +40,7 @@
                 @Html.ValidationMessageFor(model => model.HasFreeWiFi)
             </div>
         </div>
-
+         -->  
         <div class="form-group">
             @Html.LabelFor(model => model.OpeningDate, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -70,6 +70,30 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Stars)
                 @Html.ValidationMessageFor(model => model.Stars)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomNr, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoomNr)
+                @Html.ValidationMessageFor(model => model.RoomNr)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City.Name)
+                @Html.ValidationMessageFor(model => model.City.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City.County, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City.County.Name)
+                @Html.ValidationMessageFor(model => model.City.County.Name)
             </div>
         </div>
 
