@@ -75,12 +75,18 @@ namespace FZTH.MVC.Controllers
                 }
                 HotelList.Hotels.Remove(hotel);
                 return RedirectToAction("Index");
+               // return Json(HotelList.Hotels, JsonRequestBehavior.AllowGet);
             }
             catch
             {
                 return View();
             }
 
+        }
+        [HttpGet]
+        public JsonResult HotelsJS()
+        {
+            return Json(HotelList.Hotels, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Edit(int id)
         {

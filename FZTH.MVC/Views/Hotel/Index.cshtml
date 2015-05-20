@@ -78,8 +78,11 @@
         <br />
         <section id="tableSection">
             <h3>Hotel List</h3>
-            @Html.ActionLink("Create New", "Create", "Hotel")
-            <table class="table">
+            <a href="#hotelsContainer" id="create">Create New</a>
+            <div id="hotelsContainer"></div>
+             <!-- @Html.ActionLink("Create New", "Create", "Hotel")
+            
+         <table class="table">
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
@@ -130,10 +133,14 @@
 
 
             </table>
+              --> 
             <a target="_top" href="#header"> Go to top</a>
         </section>
 
-
+@section Scripts
+    {
+    <script type="text/javascript" src="~/Scripts/dynamicTableScript.js"></script>
+}
         <br />
         <section id="lastMinuteDealsSection">
 
