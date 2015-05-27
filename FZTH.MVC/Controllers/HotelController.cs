@@ -103,12 +103,13 @@ namespace FZTH.MVC.Controllers
         }
         public ActionResult Edit(int id)
         {
-            var hotel = HotelList.Hotels.FirstOrDefault(x => x.Id == id);
-            if (hotel == null)
+            DBManager dbManager = new DBManager(NHibernateHelper.OpenSession());
+            Entities.Hotel newHotel = dbManager.GetHotelById(id);
+            if (newHotel != null)
             {
-                return HttpNotFound();
+                return View(ClassConverter.FromEntityHotelToModelHotel(newHotel));
             }
-            return View(hotel);
+            return new HttpStatusCodeResult(404);
         }
         [HttpPost]
         public ActionResult Edit(Hotel hotel)
@@ -116,24 +117,28 @@ namespace FZTH.MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                foreach (Hotel h in HotelList.Hotels)
-                {
-                    if (h.Id == hotel.Id)
-                    {
-                        h.Name = hotel.Name;
-                        h.Description = hotel.Description;
-                        h.Stars = hotel.Stars;
-                        h.OpeningDate = hotel.OpeningDate;
-                        h.DistanceToCenter = hotel.DistanceToCenter;
-                        h.City.Name = hotel.City.Name;
-                        h.City.County.Name = hotel.City.County.Name;
-                        h.RoomNr = hotel.RoomNr;
-                        h.Rooms = new Room[hotel.RoomNr];
-                    }
-                }
-                Response.StatusCode = 200;
-                return Json(hotel);
+                DBManager dbManager = new DBManager(NHibernateHelper.OpenSession());
+                Entities.Hotel entityHotel = ClassConverter.FromModelHotelToEntityHotel(hotel);
+                dbManager.EditHotel(entityHotel);
 
+                //foreach (Hotel h in HotelList.Hotels)
+                //{
+                //    if (h.Id == hotel.Id)
+                //    {
+                //        h.Name = hotel.Name;
+                //        h.Description = hotel.Description;
+                //        h.Stars = hotel.Stars;
+                //        h.OpeningDate = hotel.OpeningDate;
+                //        h.DistanceToCenter = hotel.DistanceToCenter;
+                //        h.City.Name = hotel.City.Name;
+                //        h.City.County.Name = hotel.City.County.Name;
+                //        h.RoomNr = hotel.RoomNr;
+                //        h.Rooms = new Room[hotel.RoomNr];
+                //    }
+                //}
+                //Response.StatusCode = 200;
+                //return Json(hotel);
+               return RedirectToAction("Index");
             }
             else
             {

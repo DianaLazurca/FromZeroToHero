@@ -68,6 +68,40 @@ namespace FZTH.MVC.Repositories
                 return hotel;
             }
           
+        }
+
+        public Entities.Hotel GetHotelById(int id)
+        {
+            return session.QueryOver<Hotel>().Where(x => x.Id == id).SingleOrDefault();
         } 
+
+        public  void EditHotel(Hotel entityHotel)
+        {
+            using (var transaction = session.BeginTransaction())
+            {
+                Location loc = GetLocation(entityHotel.Location.City, entityHotel.Location.County);
+                Hotel updatedHotel = session.QueryOver<Hotel>().Where( x => x.Id == entityHotel.Id).SingleOrDefault();
+
+                updatedHotel.Name = entityHotel.Name;
+
+                if (loc != null)
+                {
+                    updatedHotel.Location = loc;
+                }
+                else
+                {
+                    Location location = new Location
+                    {
+                        City = entityHotel.Location.City,
+                        County = entityHotel.Location.County
+                    };
+
+                    session.SaveOrUpdate(location);
+                    updatedHotel.Location = location;
+                }
+                session.SaveOrUpdate(updatedHotel);
+                transaction.Commit();
+            }
+        }
     }
 }
