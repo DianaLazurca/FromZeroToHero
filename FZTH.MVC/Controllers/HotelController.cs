@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FZTH.MVC.Models;
+using FZTH.MVC.Repositories;
+using FZTH.MVC.Mappings;
 
 namespace FZTH.MVC.Controllers
 {
@@ -86,7 +88,17 @@ namespace FZTH.MVC.Controllers
         [HttpGet]
         public JsonResult HotelsJS()
         {
-            return Json(HotelList.Hotels, JsonRequestBehavior.AllowGet);
+            DBManager dbManager = new DBManager(NHibernateHelper.OpenSession());
+
+            List<Entities.Hotel> allHotels = dbManager.GetAllHotels().ToList();
+            List<Models.Hotel> allHotelsToBeSent = new List<Hotel>();
+
+            foreach (Entities.Hotel hotelEntity in allHotels)
+            {
+                allHotelsToBeSent.Add(ClassConverter.ConvertToHotel(hotelEntity));
+            }
+
+            return Json(allHotelsToBeSent, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Edit(int id)
         {
@@ -118,6 +130,38 @@ namespace FZTH.MVC.Controllers
                         h.Rooms = new Room[hotel.RoomNr];
                     }
                 }
+                Response.StatusCode = 200;
+                return Json(hotel);
+
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
+        }
+
+        [HttpPost]
+        public ActionResult EditHotel(Hotel hotel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                foreach (Hotel h in HotelList.Hotels)
+                {
+                    if (h.Id == hotel.Id)
+                    {
+                        h.Name = hotel.Name;
+                        h.Description = hotel.Description;
+                        h.Stars = hotel.Stars;
+                        h.OpeningDate = hotel.OpeningDate;
+                        h.DistanceToCenter = hotel.DistanceToCenter;
+                        h.City.Name = hotel.City.Name;
+                        h.City.County.Name = hotel.City.County.Name;
+                        h.RoomNr = hotel.RoomNr;
+                        h.Rooms = new Room[hotel.RoomNr];
+                    }
+                }
                 return RedirectToAction("Index");
 
             }
@@ -125,7 +169,7 @@ namespace FZTH.MVC.Controllers
             {
                 return View();
             }
-            
+
         }
         public ActionResult Detail(int id)
         {

@@ -100,6 +100,95 @@
         }
     });
 
+    $('#hotelsContainer').on('click', 'a[data-id]', function () {
+        // alert("delete clicked");
+        var hotelId = $(this).attr("data-id");
+        console.log(hotelId);
+        
+        var tr = $('table tr[id = ' + parseInt(hotelId) + ']');
+        //console.log(tr);
+        tr.children().each(function (index) {
+            
+            if (index < 8) {
+                var t = $(this).text();
+                $(this).html($('<input/>', { 'value': t }).val(t));
+            }
+
+            if (index == 8) {
+                var count = $(this).find("img");
+                $(this).html($('<input/>', { 'value': count.length }).val(count.length));
+            }
+            if (index == 9) {
+                tr.children().last().children().remove();
+                tr.children().last().append($('<a target="_self" href="#hotelContainer" id="confirm'+ hotelId+'" > Confirm </a> | <a href="#hotelContainer" target="_self" id= "cancel"> Cancel </a>'))
+
+            }
+            
+        });
+    });
+
+    $('#hotelsContainer').on('click', 'a[id ^="confirm"]', function () {
+        alert("confirm pressed");
+        var hotelId = $(this).attr("id").split("confirm")[1];
+        var tr = $('table tr[id = ' + parseInt(hotelId) + ']');
+        console.log(tr);
+        var hotel = new Array();
+        hotel.push(hotelId);
+        
+        tr.children().each(function (index) {
+
+            if (index < 9) {
+                hotel.push($(this).find('input').val());
+            }
+
+            
+           /* if (index == 9) {
+                tr.children().last().children().remove();
+                tr.children().last().append($('<a target="_self" href="#hotelContainer" id="confirm' + hotelId + '" > Confirm </a> | <a href="#hotelContainer" target="_self" id= "cancel"> Cancel </a>'))
+
+            }*/
+
+        });
+      //  console.log(hotel);
+        $.ajax({
+            method: "POST",
+            url: "http://localhost/booking/Hotel/Edit/",
+            dataType: 'application/json',
+            data: {
+                    Id: parseInt(hotelId),
+                    Name: hotel.shift(),
+                    Description: hotel.shift(),
+                    Address: hotel.shift(),
+                    City: { Name : hotel.shift(), County : hotel.shift()},
+                    DistanceToCenter: hotel.shift(),
+                    OpeningDate: hotel.shift(),
+                    RoomNr: hotel.shift(),
+                    Stars: hotel.shift()
+
+            },
+
+            success: function (data) {
+                tr.children().each(function (index) {
+
+                    if (index < 8) {
+                        $(this).text($(this).find('input').val());
+                    }
+
+                    if (index == 8) {
+                        var count = $(this).find("input").val();
+                        console.log(count);
+                    }
+                    if (index == 9) {
+                        tr.children().last().children().remove();
+                        tr.children().last().append($('<a target="_self" href="#hotelContainer" id="confirm' + hotelId + '" > Confirm </a> | <a href="#hotelContainer" target="_self" id= "cancel"> Cancel </a>'))
+
+                    }
+
+                });
+            }
+
+        });
+    });
 
 
 
