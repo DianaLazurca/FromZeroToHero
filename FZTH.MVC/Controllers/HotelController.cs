@@ -38,7 +38,7 @@ namespace FZTH.MVC.Controllers
 
                 Entities.Hotel entityHotel = ClassConverter.FromModelHotelToEntityHotel(hotel);
                 DBManager dbManager = new DBManager(NHibernateHelper.OpenSession());
-                dbManager.AddNewHotel(entityHotel);
+               Entities.Hotel h =  dbManager.AddNewHotel(entityHotel);
                /* int newID = 0;
                 foreach(Hotel h in HotelList.Hotels) {
                     if (h.Id > newID)

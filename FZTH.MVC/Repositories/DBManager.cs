@@ -26,11 +26,11 @@ namespace FZTH.MVC.Repositories
           return  (Location)session.QueryOver<Location>().Where(x => x.City == city && x.County == county).SingleOrDefault();
         }
 
-        public void AddNewHotel(Entities.Hotel hotel)
+        public Entities.Hotel AddNewHotel(Entities.Hotel hotel)
         {
             using (var transaction = session.BeginTransaction())
             {
-                Location location = GetLocation(hotel.Location.City, hotel.Location.County);
+                Location location =   GetLocation(hotel.Location.City, hotel.Location.County);
 
                 if (location != null)
                 {
@@ -50,6 +50,7 @@ namespace FZTH.MVC.Repositories
                 }
                 session.SaveOrUpdate(hotel);
                 transaction.Commit();
+                return hotel;
             }
           
         } 
