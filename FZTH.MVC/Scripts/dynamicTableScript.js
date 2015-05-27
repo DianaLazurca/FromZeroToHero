@@ -62,6 +62,21 @@
 
 }
 
+// create a new hotel 
+//$('#create').click(function () {
+
+//    console.log("click pe create hotel");
+//    var tr = $('<tr></tr>');
+//    var inputs = $('<td><input type = "text"></td>');
+//    tr.append(inputs);
+//    tr.append($('<td><input type = "text"></td>'));
+//    tr.append($('<td><input type = "text"></td>'));
+//    tr.append($('<td><input type = "text"></td>'));
+//    $('#hotelsContainer').append(tr);
+//    console.log(tr.children());
+    
+//});
+
     $.ajax({
         method: "GET",
         // url: '@Url.Action("HotelsJS", "Hotel")',

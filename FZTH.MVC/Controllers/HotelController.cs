@@ -34,7 +34,12 @@ namespace FZTH.MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                int newID = 0;
+                // avem hotel de tip Models.Hotel, ar trebui sa-l transformam in hotel de tip Entity
+
+                Entities.Hotel entityHotel = ClassConverter.FromModelHotelToEntityHotel(hotel);
+                DBManager dbManager = new DBManager(NHibernateHelper.OpenSession());
+                dbManager.AddNewHotel(entityHotel);
+               /* int newID = 0;
                 foreach(Hotel h in HotelList.Hotels) {
                     if (h.Id > newID)
                     {
@@ -44,8 +49,8 @@ namespace FZTH.MVC.Controllers
 
                 hotel.Id = newID + 1;
                 hotel.Rooms = new Room[2];
-                HotelList.Hotels.Add(hotel);
-                return RedirectToAction("Index");
+                HotelList.Hotels.Add(hotel);*/
+                return RedirectToAction("Index"); 
             }
             else
             {
@@ -95,7 +100,7 @@ namespace FZTH.MVC.Controllers
 
             foreach (Entities.Hotel hotelEntity in allHotels)
             {
-                allHotelsToBeSent.Add(ClassConverter.ConvertToHotel(hotelEntity));
+                allHotelsToBeSent.Add(ClassConverter.FromEntityHotelToModelHotel(hotelEntity));
             }
 
             return Json(allHotelsToBeSent, JsonRequestBehavior.AllowGet);

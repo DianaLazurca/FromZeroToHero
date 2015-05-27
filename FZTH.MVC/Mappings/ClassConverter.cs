@@ -8,7 +8,7 @@ namespace FZTH.MVC.Mappings
 {
     public static class ClassConverter
     {
-        public static Hotel ConvertToHotel(Entities.Hotel hotel)
+        public static Hotel FromEntityHotelToModelHotel(Entities.Hotel hotel)
         {
             Hotel newHotel = new Hotel
             {
@@ -29,6 +29,22 @@ namespace FZTH.MVC.Mappings
             };
 
             return newHotel;
+        }
+
+        public static Entities.Hotel FromModelHotelToEntityHotel(Models.Hotel modelHotel) 
+        {
+            Entities.Hotel entityHotel = new Entities.Hotel
+            {
+                Id = modelHotel.Id,
+                Name = modelHotel.Name,
+                Location = new Entities.Location
+                {                    
+                    City = modelHotel.City.Name,
+                    County = modelHotel.City.County.Name
+                }
+            };
+
+            return entityHotel;
         }
     }
 }
