@@ -75,12 +75,8 @@ namespace FZTH.MVC.Controllers
         {
             try
             {
-                var hotel = HotelList.Hotels.FirstOrDefault(x => x.Id == id);
-                if (hotel == null)
-                {
-                    return HttpNotFound();
-                }
-                HotelList.Hotels.Remove(hotel);
+                DBManager dbManager = new DBManager(NHibernateHelper.OpenSession());
+                dbManager.DeleteHotel(id);
                 return RedirectToAction("Index");
                // return Json(HotelList.Hotels, JsonRequestBehavior.AllowGet);
             }

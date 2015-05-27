@@ -26,6 +26,21 @@ namespace FZTH.MVC.Repositories
           return  (Location)session.QueryOver<Location>().Where(x => x.City == city && x.County == county).SingleOrDefault();
         }
 
+        public void DeleteHotel(int id)
+        {
+            using (var transaction = session.BeginTransaction())
+            {
+                Hotel hotel = (Hotel)session.QueryOver<Hotel>().Where(x => x.Id == id).SingleOrDefault();
+                if (hotel != null)
+                {
+                    session.Delete(hotel);
+                }
+
+
+               transaction.Commit();
+            }
+        }
+
         public Entities.Hotel AddNewHotel(Entities.Hotel hotel)
         {
             using (var transaction = session.BeginTransaction())
